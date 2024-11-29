@@ -35,7 +35,7 @@ function Home() {
 
   return (
     <div>
-      <div className="text-blue-600 font-bold">Hello World!</div>
+      <div className="text-red-600 font-bold">Hello World!</div>
       <button
         type="button"
         onClick={() => {
