@@ -3,12 +3,19 @@ import {
   Outlet,
   ScrollRestoration,
   createRootRoute,
+  createRootRouteWithContext,
 } from '@tanstack/react-router'
 import { Meta, Scripts } from '@tanstack/start'
 import type { ReactNode } from 'react'
 import gloabalCSS from '../styles/global.css?url'
+import type { QueryClient } from '@tanstack/react-query'
 
-export const Route = createRootRoute({
+type MyRouterContext = {
+  queryClient: QueryClient
+}
+
+export const Route = createRootRouteWithContext<MyRouterContext>()({
+  context: () => ({}),
   head: () => ({
     meta: [
       {
@@ -38,6 +45,7 @@ export const Route = createRootRoute({
         ],
   }),
   component: RootComponent,
+  notFoundComponent: () => <div>Not Found</div>,
 })
 
 function RootComponent() {
